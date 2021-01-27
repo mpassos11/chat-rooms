@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Chat App</title>
-  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
-  <script defer src="js/script.js"></script>
-</head>
-<body>
-  <div id="room-container">
-    <% Object.keys(rooms).forEach(room => { %>
-      <div><%= room %></div>
-      <a href="/<%= room %>">Join</a>
-    <% }) %>
-  </div>
-  <form action="/room" method="POST">
-    <input name="room" type="text" required>
-    <button type="submit">New Room</button>
-  </form>
-</body>
-</html>
+<%- include('./partials/header.ejs') %>
+<div class="container">
+    <div class="card my-4">
+        <div class="card-header">
+            <h4>Rooms</h4>
+        </div>
+        <div class="card-body">
+            <div id="room-container">
+                <% Object.keys(rooms).forEach(room => { %>
+                  <a href="/<%= room %>" class="btn btn-primary"><%= room %> - Join</a><br>
+                <% }) %>
+              </div>
+        </div>
+    </div>
+    <div class="card my-4">
+        <div class="card-header">
+            <h4>Create a new room</h4>
+        </div>
+        <div class="card-body">
+            <form action="/room" method="post">
+                <div class="form-group">
+                    <label for="room">Room name</label>
+                    <input type="text" name="room" id="room" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-success">New Room</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('./partials/footer.ejs') %>

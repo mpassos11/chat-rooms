@@ -1,0 +1,80 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.card-messages {
+    padding: 10px;
+}
+
+#send-container {
+    position: fixed;
+    padding-bottom: 30px;
+    bottom: 0;
+    background-color: white;
+    width: 70%;
+    display: flex;
+}
+
+.box-right {
+    width: 300px;
+    background: #00bfb6;
+    padding: 10px;
+    text-align: right;
+    font-weight: 900;
+    color: #fff;
+    font-family: arial;
+    position: relative;
+    float: right;
+    right: 15px;
+}
+
+.box-left {
+    width: 300px;
+    background: #00bfb6;
+    padding: 10px;
+    text-align: right;
+    font-weight: 900;
+    color: #fff;
+    font-family: arial;
+    position: relative;
+    float: left;
+    right: -15px;
+}
+
+.sb1:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid #00bfb6;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #00bfb6;
+    border-bottom: 10px solid transparent;
+    right: -19px;
+    top: 6px;
+}
+
+.sb2:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid #00bfb6;
+    border-top: 10px solid #00bfb6;
+    border-bottom: 10px solid transparent;
+    left: -19px;
+    top: 6px;
+  }

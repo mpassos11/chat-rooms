@@ -6,13 +6,13 @@ const messageInput = document.getElementById('message-input');
 
 if (messageForm != null) {
     const name = prompt('What is your name?');
-    appendMessage('You joined');
+    appendMessage('You joined', 'info');
     socket.emit('new-user', roomName, name);
 
     messageForm.addEventListener('submit', e => {
         e.preventDefault();
         const message = messageInput.value;
-        appendMessage(`You: ${message}`);
+        appendMessage(`${message}`, 'me-message');
         socket.emit('send-chat-message', roomName, message);
         messageInput.value = '';
     });
@@ -29,19 +29,32 @@ socket.on('room-created', room => {
 });
 
 socket.on('chat-message', data => {
-    appendMessage(`${data.name}: ${data.message}`);
+    let type = 'other-message';
+    if (data.name == 'You') type = 'me-message';
+    appendMessage(`${data.message}`, type);
 });
 
 socket.on('user-connected', name => {
-    appendMessage(`${name} connected`);
+    let type = 'info';
+    appendMessage(`${name} connected`, type);
 });
 
 socket.on('user-disconnected', name => {
-    appendMessage(`${name} disconnected`);
+    let type = 'info';
+    appendMessage(`${name} disconnected`, info);
 });
 
-function appendMessage(message) {
-    const messageElement = document.createElement('div');
-    messageElement.innerText = message;
-    messageContainer.append(messageElement);
+function appendMessage(message, type) {
+    console.log(type);
+    if (type == 'info') {
+        messageContainer.innerHTML += ('<div>' + message + '</div>');
+    }
+
+    if (type == 'me-message') {
+        messageContainer.innerHTML += ('<div class="row"><div class="col text-right my-1"><div class="box-right sb1">' + message + '</div></div></div>');
+    }
+
+    if (type == 'other-message') {
+        messageContainer.innerHTML += ('<div class="row"><div class="col text-left my-1"><div class="box-left sb2">' + message + '</div></div></div>');
+    }
 }
