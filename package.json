@@ -1,0 +1,27 @@
+{
+  "name": "chat-rooms",
+  "version": "1.0.0",
+  "description": "Real time chat rooms with node.js and socket.io",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpassos11/chat-rooms.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mpassos11/chat-rooms/issues"
+  },
+  "homepage": "https://github.com/mpassos11/chat-rooms#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "socket.io": "^3.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
